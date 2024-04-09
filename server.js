@@ -1,21 +1,23 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
-const http = require('http'); // Import HTTP module
+
 const PORT = 3004;
 
 // Create an Express app
 const app = express();
 // Enable CORS
-app.use(cors());
-
-// CORS configuration
 const corsOptions = {
-    origin: 'https://dazzzlingsphere.com', // Specify your React app's origin
-    optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type,Authorization',
+    preflightContinue: false,
+    optionsSuccessStatus: 204
 };
-
 app.use(cors(corsOptions)); // Enable CORS with the specified options
+
+
+
 // Database connection configuration
 const db = mysql.createConnection({
     host: '154.41.233.52',
