@@ -9,7 +9,13 @@ const app = express();
 // Enable CORS
 app.use(cors());
 
+// CORS configuration
+const corsOptions = {
+    origin: 'https://dazzzlingsphere.com', // Specify your React app's origin
+    optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
+app.use(cors(corsOptions)); // Enable CORS with the specified options
 // Database connection configuration
 const db = mysql.createConnection({
     host: '154.41.233.52',
